@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>David Cecilia Iglesias</title>
+<meta name="description" content="Portfolio de David Cecilia Iglesias, desarrollador de aplicaciones multiplataforma en formación: proyectos en TypeScript, React Native, Java y SQL, con foco en ciberseguridad e IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: rejilla suiza de dos columnas — etiqueta de sección a la izquierda, contenido a la derecha; registro de commits como hilo conductor */
+:root {
+  --bg: #F5F6F4;
+  --surface: #FFFFFF;
+  --fg: #14171B;
+  --muted: #5A626C;
+  --line: #D9DDE0;
+  --accent: #D3241C;
+  --accent-ink: #FFFFFF;
+  --tag: #ECEEEC;
+  --ok: #1F7A4D;
+  --plan: #8A6A12;
+
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem; --s7: 3rem; --s8: 5rem;
+  --maxw: 72rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101316; --surface: #161A1F; --fg: #ECEEF0; --muted: #98A1AB; --line: #272D34;
+    --accent: #FF4B3E; --accent-ink: #12080A; --tag: #1E242A; --ok: #4CC08A; --plan: #E0B54A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101316; --surface: #161A1F; --fg: #ECEEF0; --muted: #98A1AB; --line: #272D34;
+  --accent: #FF4B3E; --accent-ink: #12080A; --tag: #1E242A; --ok: #4CC08A; --plan: #E0B54A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 1rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap {
+  max-width: var(--maxw); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+.mono { font-family: var(--f-mono); font-size: .8125rem; }
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); padding-block: var(--s3); }
+.mark { font-family: var(--f-display); font-weight: 800; font-stretch: 112%; text-decoration: none; letter-spacing: -.01em; display: flex; align-items: center; gap: .5rem; }
+.mark i { width: .7rem; height: .7rem; background: var(--accent); display: inline-block; }
+.top nav { display: flex; gap: var(--s5); }
+.top nav a { text-decoration: none; font-size: .875rem; color: var(--muted); }
+.top nav a:hover { color: var(--fg); }
+@media (max-width: 620px) { .top nav { gap: var(--s4); } .top nav a.hide-sm { display: none; } }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: 1fr; gap: var(--s6); padding-block: var(--s7) var(--s7); }
+@media (min-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: end; padding-block: var(--s8) var(--s7); } }
+.eyebrow { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: .25rem .9rem; }
+.eyebrow .dot::before { content: ""; display: inline-block; width: .45rem; height: .45rem; border-radius: 50%; background: var(--ok); margin-right: .45rem; vertical-align: .08em; }
+h1 {
+  font-family: var(--f-display); font-weight: 850; font-stretch: 75%;
+  font-size: clamp(3rem, 11vw, 7.25rem); line-height: .86; letter-spacing: -.02em;
+  margin: var(--s4) 0 var(--s5); text-transform: uppercase;
+}
+h1 span { display: block; }
+h1 .last { color: var(--accent); }
+.lede { font-size: clamp(1.0625rem, 1.6vw, 1.25rem); max-width: 34ch; margin: 0 0 var(--s5); text-wrap: pretty; }
+.cta { display: flex; flex-wrap: wrap; gap: var(--s3); }
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.1rem;
+  font-weight: 600; font-size: .9375rem; text-decoration: none; border: 1.5px solid var(--fg);
+  transition: background .15s, color .15s, transform .15s;
+}
+.btn.primary { background: var(--fg); color: var(--bg); }
+.btn:hover { transform: translateY(-1px); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.ghost:hover { background: var(--fg); color: var(--bg); }
+
+/* Git log panel */
+.log { border: 1px solid var(--line); background: var(--surface); min-width: 0; }
+.log header { display: flex; justify-content: space-between; align-items: center; padding: .6rem .9rem; border-bottom: 1px solid var(--line); }
+.log header b { font-family: var(--f-mono); font-weight: 500; font-size: .75rem; color: var(--muted); }
+.log ol { list-style: none; margin: 0; padding: .4rem 0; }
+.log li { display: grid; grid-template-columns: 1rem 5.6rem minmax(0, 1fr); gap: .5rem; padding: .35rem .9rem; font-family: var(--f-mono); font-size: .78rem; align-items: baseline; }
+.log li::before { content: ""; width: .5rem; height: .5rem; border: 1.5px solid var(--accent); border-radius: 50%; transform: translateY(.05rem); }
+.log li:first-child::before { background: var(--accent); }
+.log time { color: var(--muted); font-variant-numeric: tabular-nums; }
+.log span { overflow-wrap: anywhere; }
+.log span em { font-style: normal; color: var(--muted); }
+
+/* Sections */
+section.block { border-top: 1px solid var(--line); }
+section.block > .wrap { display: grid; grid-template-columns: 1fr; gap: var(--s5); padding-block: var(--s7); }
+@media (min-width: 900px) { section.block > .wrap { grid-template-columns: 13rem minmax(0, 1fr); gap: var(--s6); padding-block: var(--s8); } }
+.label { display: flex; flex-direction: column; gap: .35rem; }
+.label h2 { font-family: var(--f-display); font-weight: 800; font-stretch: 100%; font-size: 1.5rem; line-height: 1.1; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.label p { margin: 0; color: var(--muted); font-size: .875rem; max-width: 26ch; }
+@media (min-width: 900px) { .label { position: sticky; top: 5rem; align-self: start; } }
+
+/* Filters */
+.filters { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: var(--s5); }
+.filters button {
+  font: 500 .8125rem var(--f-mono); padding: .35rem .7rem; border: 1px solid var(--line);
+  background: transparent; color: var(--muted); cursor: pointer;
+}
+.filters button:hover { color: var(--fg); border-color: var(--fg); }
+.filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--fg); }
+.proj { display: grid; grid-template-columns: 1fr; gap: var(--s3); padding-block: var(--s5); border-bottom: 1px solid var(--line); }
+@media (min-width: 760px) { .proj { grid-template-columns: minmax(0, 1fr) 15rem; gap: var(--s6); } }
+.proj h3 { font-family: var(--f-display); font-weight: 750; font-stretch: 100%; font-size: 1.375rem; line-height: 1.2; margin: 0 0 .35rem; text-wrap: balance; }
+.proj h3 a { text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0 2px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .2s; }
+.proj h3 a:hover { background-size: 100% 2px; }
+.proj .what { margin: 0 0 var(--s3); max-width: 62ch; }
+.proj ul.points { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: .9375rem; max-width: 62ch; }
+.proj ul.points li { margin-bottom: .2rem; }
+.meta { display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.meta dl { margin: 0; display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: .25rem .6rem; font-size: .8125rem; }
+.meta dt { font-family: var(--f-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-top: .1rem; }
+.meta dd { margin: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: .3rem; }
+.tag { font-family: var(--f-mono); font-size: .72rem; padding: .15rem .45rem; background: var(--tag); }
+.repo { font-family: var(--f-mono); font-size: .78rem; color: var(--accent); text-decoration: none; overflow-wrap: anywhere; }
+.repo:hover { text-decoration: underline; }
+.proj.minor { padding-block: var(--s4); }
+.proj.minor h3 { font-size: 1.125rem; }
+.proj[hidden] { display: none !important; }
+.empty-filter { color: var(--muted); padding-block: var(--s5); margin: 0; }
+
+/* Workbench */
+.bench { display: grid; grid-template-columns: 1fr; gap: var(--s4); }
+@media (min-width: 760px) { .bench { grid-template-columns: 1fr 1fr; } }
+.wip { border: 1px solid var(--line); background: var(--surface); padding: var(--s5); display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.wip.featured { border-color: var(--fg); }
+@media (min-width: 760px) { .wip.featured { grid-column: 1 / -1; } }
+.wip h3 { font-family: var(--f-display); font-weight: 750; font-size: 1.25rem; margin: 0; }
+.wip p { margin: 0; max-width: 64ch; }
+.status { font-family: var(--f-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; display: inline-flex; align-items: center; gap: .4rem; }
+.status::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: currentColor; }
+.status.doing { color: var(--ok); }
+.status.plan { color: var(--plan); }
+.queue { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.queue li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s3); padding: .7rem 0; border-bottom: 1px dashed var(--line); align-items: baseline; }
+.queue li:last-child { border-bottom: 0; }
+.queue small { color: var(--muted); display: block; font-size: .8125rem; }
+
+/* Timeline */
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--fg); }
+.timeline li { position: relative; padding: 0 0 var(--s5) var(--s5); display: grid; grid-template-columns: 1fr; gap: .1rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: .45rem; width: 12px; height: 12px; background: var(--bg); border: 2px solid var(--fg); border-radius: 50%; }
+.timeline li.work::before { background: var(--accent); border-color: var(--accent); }
+.timeline .when { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline h3 { font-family: var(--f-display); font-weight: 700; font-size: 1.125rem; margin: 0; line-height: 1.3; }
+.timeline .where { color: var(--muted); font-size: .9375rem; }
+.timeline p { margin: .25rem 0 0; max-width: 62ch; font-size: .9375rem; }
+.legend { display: flex; gap: var(--s4); margin-bottom: var(--s5); font-size: .8125rem; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: .4rem; vertical-align: -.05em; border: 2px solid var(--fg); }
+.legend .lw::before { background: var(--accent); border-color: var(--accent); }
+
+/* Stack */
+.stack { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--fg); }
+.stack-row { display: grid; grid-template-columns: 1fr; gap: .4rem; padding-block: var(--s4); border-bottom: 1px solid var(--line); }
+@media (min-width: 640px) { .stack-row { grid-template-columns: 10rem minmax(0, 1fr); gap: var(--s5); } }
+.stack-row h3 { margin: 0; font-family: var(--f-mono); font-weight: 500; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-top: .15rem; }
+.skills { display: flex; flex-wrap: wrap; gap: .4rem .5rem; }
+.skill { font-weight: 600; font-size: .9375rem; }
+.skill small { font-weight: 400; color: var(--muted); font-size: .78rem; }
+.skill + .skill::before { content: "/"; color: var(--line); margin-right: .5rem; font-weight: 400; }
+
+/* About */
+.about { display: grid; grid-template-columns: 1fr; gap: var(--s5); }
+@media (min-width: 760px) { .about { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--s6); } }
+.about p { margin: 0 0 var(--s4); max-width: 62ch; }
+.facts { margin: 0; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .5rem .8rem; font-size: .9375rem; align-content: start; }
+.facts dt { font-family: var(--f-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-top: .2rem; }
+.facts dd { margin: 0; }
+
+/* Contact */
+.contact { background: var(--fg); color: var(--bg); }
+.contact .wrap { padding-block: var(--s8); display: grid; gap: var(--s5); }
+.contact h2 { font-family: var(--f-display); font-weight: 850; font-stretch: 75%; text-transform: uppercase; font-size: clamp(2.25rem, 7vw, 4.5rem); line-height: .9; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.contact p { margin: 0; max-width: 52ch; opacity: .8; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); }
+.mail code { font-family: var(--f-mono); font-size: clamp(1rem, 2.6vw, 1.375rem); user-select: all; overflow-wrap: anywhere; }
+.mail button {
+  font: 600 .8125rem var(--f-body); padding: .5rem .85rem; cursor: pointer;
+  background: var(--accent); color: var(--accent-ink); border: 0;
+}
+.links { display: flex; flex-wrap: wrap; gap: var(--s4) var(--s5); }
+.links a { font-weight: 600; text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: .1rem; }
+.links a:hover { color: var(--accent); }
+footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s3); color: var(--muted); font-size: .8125rem; }
+</style>
+<style>body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#inicio" aria-label="Inicio"><i aria-hidden="true"></i>D. Cecilia</a>
+    <nav aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#ahora" class="hide-sm">Ahora</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><span class="dot">Madrid</span><span>2º de DAM</span><span>Java · Python · SQL</span></div>
+        <h1><span>David</span><span>Cecilia</span><span class="last">Iglesias</span></h1>
+        <p class="lede">Desarrollador de aplicaciones multiplataforma en formación. Construyo aplicaciones con bases de datos, APIs e integración de IA.</p>
+        <div class="cta">
+          <a class="btn primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn ghost" href="https://github.com/david1cecilia-alt" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/david-cecilia" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <aside class="log" aria-label="Actividad reciente en GitHub">
+        <header><b>git log --oneline</b><b>david1cecilia-alt</b></header>
+        <ol>
+          <li><time datetime="2026-10-18">2026-10-18</time><span>PromeHub-DataExchange <em>· CSV ↔ XML</em></span></li>
+          <li><time datetime="2026-06-29">2026-06-29</time><span>API REST de películas <em>· Node + MongoDB</em></span></li>
+          <li><time datetime="2026-05-14">2026-05-14</time><span>Autoescuelas Rápido <em>· Java + MySQL</em></span></li>
+          <li><time datetime="2026-05-09">2026-05-09</time><span>Katas de Python, JS y SQL</span></li>
+          <li><time datetime="2025-12-09">2025-12-09</time><span>Rutas &amp; Ruedas <em>· HTML + CSS</em></span></li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block" id="proyectos">
+    <div class="wrap">
+      <div class="label">
+        <h2>Proyectos</h2>
+        <p>Código público en GitHub, de más a menos completo.</p>
+      </div>
+      <div>
+        <div class="filters" role="group" aria-label="Filtrar por tecnología">
+          <button type="button" id="f-all" data-f="all" aria-pressed="true">Todos</button>
+          <button type="button" id="f-java" data-f="java" aria-pressed="false">Java</button>
+          <button type="button" id="f-js" data-f="js" aria-pressed="false">JavaScript</button>
+          <button type="button" id="f-py" data-f="py" aria-pressed="false">Python</button>
+          <button type="button" id="f-db" data-f="db" aria-pressed="false">Bases de datos</button>
+        </div>
+
+        <div class="projects" id="project-list">
+          <article class="proj" data-tags="java db">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/Proyecto_Intermodular_DSS" target="_blank" rel="noopener">Autoescuelas Rápido</a></h3>
+              <p class="what">Aplicación de gestión para una autoescuela con acceso por roles. Alumno, profesor y administrador entran con su propia autenticación y cada uno ve solo los datos que le corresponden.</p>
+              <ul class="points">
+                <li>Java con conexión a MySQL mediante JDBC, organizado en capas DAO y VO.</li>
+                <li>Menús jerárquicos según el rol: consultas, altas y bajas con control de acceso.</li>
+                <li>Exportación de datos a XML con esquema XSD propio, validado con JavaScript.</li>
+              </ul>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">JDBC</span><span class="tag">XML/XSD</span></div></dd>
+                <dt>Equipo</dt><dd>3 personas</dd>
+                <dt>Contexto</dt><dd>Proyecto intermodular, DAM 1º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/Proyecto_Intermodular_DSS" target="_blank" rel="noopener">↗ Proyecto_Intermodular_DSS</a>
+            </div>
+          </article>
+
+          <article class="proj" data-tags="java">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/PromeHub-DataExchange" target="_blank" rel="noopener">PromeHub DataExchange</a></h3>
+              <p class="what">Herramienta que convierte un catálogo de videojuegos entre CSV y XML en ambos sentidos, para intercambiar datos entre sistemas que usan formatos distintos.</p>
+              <ul class="points">
+                <li>Coordiné el equipo como team leader.</li>
+                <li>Serialización y deserialización XML con JAXB, proyecto gestionado con Maven.</li>
+                <li>38 casos de prueba documentados y superados, con registro de errores corregidos.</li>
+              </ul>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Java</span><span class="tag">JAXB</span><span class="tag">Maven</span></div></dd>
+                <dt>Equipo</dt><dd>4 personas (team leader)</dd>
+                <dt>Contexto</dt><dd>DAM 2º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/PromeHub-DataExchange" target="_blank" rel="noopener">↗ PromeHub-DataExchange</a>
+            </div>
+          </article>
+
+          <article class="proj" data-tags="js db">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/proyecto5-katas-nosql" target="_blank" rel="noopener">API REST de películas</a></h3>
+              <p class="what">API con operaciones CRUD completas sobre un catálogo de películas, persistido en una base de datos documental.</p>
+              <ul class="points">
+                <li>Servidor en Node.js con Express y rutas REST.</li>
+                <li>Persistencia en MongoDB.</li>
+              </ul>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span></div></dd>
+                <dt>Contexto</dt><dd>Ciberseguridad 1º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/proyecto5-katas-nosql" target="_blank" rel="noopener">↗ proyecto5-katas-nosql</a>
+            </div>
+          </article>
+
+
+          <article class="proj minor" data-tags="web">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/Proyecto_Viajes" target="_blank" rel="noopener">Rutas &amp; Ruedas</a></h3>
+              <p class="what">Web de viajes maquetada a mano con HTML5 y CSS.</p>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">HTML5</span><span class="tag">CSS</span></div></dd>
+                <dt>Contexto</dt><dd>DAM 1º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/Proyecto_Viajes" target="_blank" rel="noopener">↗ Proyecto_Viajes</a>
+            </div>
+          </article>
+
+          <article class="proj minor" data-tags="py js db">
+            <div>
+              <h3>Katas de programación</h3>
+              <p class="what">Ejercicios de práctica: 40 katas de Python, JavaScript (DOM, ES6 y asincronía) y consultas SQL.</p>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">SQL</span></div></dd>
+                <dt>Contexto</dt><dd>Ciberseguridad 1º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/proyecto3-katas-python" target="_blank" rel="noopener">↗ Python</a>
+              <a class="repo" href="https://github.com/david1cecilia-alt/proyecto2-katas-javascript" target="_blank" rel="noopener">↗ JavaScript</a>
+              <a class="repo" href="https://github.com/david1cecilia-alt/proyecto4-katas-sql" target="_blank" rel="noopener">↗ SQL</a>
+            </div>
+          </article>
+        </div>
+        <p class="empty-filter" id="empty-filter" hidden>No hay proyectos con esa tecnología todavía.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ahora">
+    <div class="wrap">
+      <div class="label">
+        <h2>En marcha</h2>
+        <p>Lo que estoy construyendo ahora y lo que viene después.</p>
+      </div>
+      <div class="bench">
+        <article class="wip featured">
+          <span class="status doing">En desarrollo</span>
+          <h3>Jarvis</h3>
+          <p>Asistente personal con IA que funciona en local, sin servicios de suscripción. Reconoce mi cara por cámara y me saluda, me hace preguntas y guarda las respuestas en Obsidian, y crea recordatorios en Google Calendar.</p>
+          <p class="mono" style="color:var(--muted)">Visión por computador · modelos propios · Obsidian · Google Calendar API</p>
+        </article>
+        <article class="wip">
+          <span class="status doing">En desarrollo</span>
+          <h3>Take Care (TCare)</h3>
+          <p>App móvil para cuidadores de personas con Alzheimer o dependencia, mi proyecto de fin de grado. Ya tiene autenticación con sesión cifrada, salas compartidas por paciente con roles, base de datos con RLS y funciones RPC, y CI con pruebas de base de datos. Ahora: medicación con recordatorios, geovalla y alertas push.</p>
+          <p class="mono" style="color:var(--muted)">TypeScript · React Native (Expo) · Supabase · PostgreSQL · repo privado hasta la entrega</p>
+        </article>
+        <article class="wip">
+          <span class="status plan">Siguientes</span>
+          <ul class="queue">
+            <li><div>Compartir archivos con cifrado de extremo a extremo<small>Seguridad y criptografía aplicada</small></div></li>
+            <li><div>Honeypot con panel en tiempo real<small>Detección y visualización de ataques</small></div></li>
+            <li><div>Vigilante de la red doméstica<small>Inventario y alertas de dispositivos</small></div></li>
+            <li><div>App offline-first con CRDT<small>Sincronización sin conflictos</small></div></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="trayectoria">
+    <div class="wrap">
+      <div class="label">
+        <h2>Trayectoria</h2>
+        <p>Experiencia y formación, de lo más reciente a lo más antiguo.</p>
+      </div>
+      <div>
+        <div class="legend"><span class="lw">Trabajo</span><span>Formación</span></div>
+        <ol class="timeline">
+          <li class="work">
+            <span class="when">2026</span>
+            <h3>Desarrollador de aplicaciones e IA (prácticas)</h3>
+            <span class="where">Oursmovement</span>
+            <p>Desarrollé la lógica y la interfaz de una app real para personalizar el diseño de productos y venderlos. Hice mantenimiento y mejoras funcionales, incluida la optimización del rendimiento, trabajando en equipo con metodología ágil y desarrollo asistido por IA en Google Antigravity.</p>
+          </li>
+          <li>
+            <span class="when">2025 – actualidad</span>
+            <h3>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma</h3>
+            <span class="where">Prometeo by ThePower · Madrid</span>
+            <p>Java, bases de datos SQL y desarrollo web con HTML5, CSS y JavaScript.</p>
+          </li>
+          <li>
+            <span class="when">2025 – actualidad</span>
+            <h3>Programa de especialización en Ciberseguridad (2 años)</h3>
+            <span class="where">Prometeo by ThePower</span>
+            <p>Primer curso completado: programación en Python y JavaScript, bases de datos SQL y NoSQL y una API REST con Node.js y MongoDB. Ahora en el segundo curso, centrado en ciberseguridad aplicada.</p>
+          </li>
+          <li class="work">
+            <span class="when">2025</span>
+            <h3>Voluntariado internacional</h3>
+            <span class="where">Worldpackers · Bélgica e Irlanda</span>
+            <p>Recepción, reservas y coordinación de tareas con equipos de distintas nacionalidades, trabajando a diario en inglés.</p>
+          </li>
+          <li class="work">
+            <span class="when">2023 – 2026</span>
+            <h3>Socorrista</h3>
+            <span class="where">Piscinas Sánchez · Madrid</span>
+            <p>Prevención, primeros auxilios y atención al público cada verano.</p>
+          </li>
+          <li>
+            <span class="when">2022 – 2024</span>
+            <h3>Bachillerato Tecnológico</h3>
+            <span class="where">IES Juan Ramón Jiménez · Madrid</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="stack">
+    <div class="wrap">
+      <div class="label">
+        <h2>Stack</h2>
+        <p>Cada tecnología enlaza con el proyecto donde la he usado.</p>
+      </div>
+      <div class="stack">
+        <div class="stack-row"><h3>Lenguajes</h3><div class="skills">
+          <span class="skill">Java <small>Autoescuela, PromeHub</small></span>
+          <span class="skill">Python <small>katas</small></span>
+          <span class="skill">JavaScript <small>API REST, katas</small></span>
+          <span class="skill">SQL <small>Autoescuela, katas</small></span>
+          <span class="skill">HTML / CSS <small>Rutas &amp; Ruedas</small></span>
+        </div></div>
+        <div class="stack-row"><h3>Datos</h3><div class="skills">
+          <span class="skill">MySQL</span><span class="skill">MongoDB</span><span class="skill">JDBC</span><span class="skill">JAXB</span><span class="skill">XML / XSD</span><span class="skill">CSV</span>
+        </div></div>
+        <div class="stack-row"><h3>Back-end</h3><div class="skills">
+          <span class="skill">Node.js</span><span class="skill">Express</span><span class="skill">APIs REST</span>
+        </div></div>
+        <div class="stack-row"><h3>Herramientas</h3><div class="skills">
+          <span class="skill">Git y GitHub</span><span class="skill">GitHub Actions</span><span class="skill">Maven</span><span class="skill">VS Code</span>
+        </div></div>
+        <div class="stack-row"><h3>IA</h3><div class="skills">
+          <span class="skill">Desarrollo asistido por IA <small>Antigravity</small></span><span class="skill">Modelos de IA en local <small>Jarvis</small></span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sobre-mi">
+    <div class="wrap">
+      <div class="label">
+        <h2>Sobre mí</h2>
+      </div>
+      <div class="about">
+        <div>
+          <p>Estudio Desarrollo de Aplicaciones Multiplataforma y, en paralelo, un programa de dos años en Ciberseguridad. Me interesa sobre todo cómo se mueven y se protegen los datos: bases de datos, APIs, automatización con IA y seguridad.</p>
+          <p>Aprendo construyendo. Los proyectos de clase los termino y los publico, y en paralelo desarrollo los míos propios, como un asistente personal con IA que funciona en local.</p>
+          <p>Fuera del código he trabajado como socorrista desde 2023 y he hecho voluntariado en Bélgica e Irlanda, donde me acostumbré a trabajar en inglés con gente de muchos países.</p>
+        </div>
+        <dl class="facts">
+          <dt>Base</dt><dd>Madrid, España</dd>
+          <dt>Idiomas</dt><dd>Español nativo<br>Inglés nivel alto</dd>
+          <dt>Busco</dt><dd>Desarrollo de software, IA y ciberseguridad</dd>
+          <dt>Extra</dt><dd>Carnet de conducir y disponibilidad para viajar</dd>
+          <dt>Fuera</dt><dd>Viajar, deporte y cocina</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <h2>Hablemos</h2>
+      <p>Si buscas un desarrollador junior con ganas de aprender, escríbeme.</p>
+      <div class="mail">
+        <code id="email">david1cecilia@gmail.com</code>
+        <button type="button" id="copy-email">Copiar email</button>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/david-cecilia" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/david1cecilia-alt" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 David Cecilia Iglesias</span>
+    <span class="mono">HTML · CSS · JavaScript, sin frameworks</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.filters button');
+  var items = document.querySelectorAll('#project-list .proj');
+  var empty = document.getElementById('empty-filter');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f');
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      var shown = 0;
+      items.forEach(function (it) {
+        var tags = (it.getAttribute('data-tags') || '').split(' ');
+        var on = f === 'all' || tags.indexOf(f) !== -1;
+        it.hidden = !on;
+        if (on) shown++;
+      });
+      empty.hidden = shown !== 0;
+    });
+  });
+
+  var copyBtn = document.getElementById('copy-email');
+  var email = document.getElementById('email');
+  copyBtn.addEventListener('click', function () {
+    var text = email.textContent.trim();
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      copyBtn.textContent = 'Seleccionado';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        copyBtn.textContent = 'Copiado';
+        setTimeout(function () { copyBtn.textContent = 'Copiar email'; }, 1800);
+      }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+})();
+</script>
+
+</body>
+</html>
