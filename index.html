@@ -157,6 +157,14 @@ section.block > .wrap { display: grid; grid-template-columns: 1fr; gap: var(--s5
 .tag { font-family: var(--f-mono); font-size: .72rem; padding: .15rem .45rem; background: var(--tag); }
 .repo { font-family: var(--f-mono); font-size: .78rem; color: var(--accent); text-decoration: none; overflow-wrap: anywhere; }
 .repo:hover { text-decoration: underline; }
+.gallery { margin-top: var(--s4); max-width: 62ch; }
+.gallery summary { display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; list-style: none; font: 500 .8125rem var(--f-mono); padding: .4rem .75rem; border: 1px solid var(--line); color: var(--fg); }
+.gallery summary::-webkit-details-marker { display: none; }
+.gallery summary::before { content: "+"; font-weight: 600; color: var(--accent); width: .8em; text-align: center; }
+.gallery[open] summary::before { content: "−"; }
+.gallery summary:hover { border-color: var(--fg); }
+.gallery summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.gallery .shots { margin-top: var(--s3); }
 .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin-top: var(--s4); max-width: 62ch; }
 .shots a { display: block; line-height: 0; border: 1px solid var(--line); background: var(--surface); transition: border-color .15s; }
 .shots a:first-child { grid-column: 1 / -1; }
@@ -387,13 +395,16 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
                 <li>Lectura del XML con DOM, compatible con el formato antiguo y el actual de los datos.</li>
                 <li>Avisos para números no válidos y habitaciones inexistentes.</li>
               </ul>
+              <details class="gallery">
+              <summary>Ver capturas (4)</summary>
               <div class="shots" aria-label="Capturas de HotelApp">
                 <a href="img/hotelapp/disponible.webp" target="_blank" rel="noopener"><img src="img/hotelapp/disponible-thumb.webp" width="440" height="299" alt="HotelApp buscando la habitación 112: aparece como disponible y se filtra su reserva" loading="lazy"></a>
                 <a href="img/hotelapp/ocupada.webp" target="_blank" rel="noopener"><img src="img/hotelapp/ocupada-thumb.webp" width="440" height="299" alt="Búsqueda de una habitación ocupada" loading="lazy"></a>
                 <a href="img/hotelapp/no-existe.webp" target="_blank" rel="noopener"><img src="img/hotelapp/no-existe-thumb.webp" width="440" height="299" alt="Aviso al buscar una habitación que no existe" loading="lazy"></a>
                 <a href="img/hotelapp/mantenimiento.webp" target="_blank" rel="noopener"><img src="img/hotelapp/mantenimiento-thumb.webp" width="440" height="299" alt="Habitación en mantenimiento" loading="lazy"></a>
               </div>
-              <p class="shots-cap">Capturas: habitación disponible, ocupada, inexistente y en mantenimiento.</p>
+              <p class="shots-cap">Habitación disponible, ocupada, inexistente y en mantenimiento. Pulsa una para verla a tamaño completo.</p>
+              </details>
             </div>
             <div class="meta">
               <dl>
@@ -579,7 +590,7 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
 
   <section class="contact" id="contacto">
     <div class="wrap">
-      <h2>Hablemos</h2>
+      <h2>Contacto</h2>
       <p>Si buscas un desarrollador junior con ganas de aprender, escríbeme.</p>
       <div class="mail">
         <code id="email">david1cecilia@gmail.com</code>
