@@ -157,6 +157,12 @@ section.block > .wrap { display: grid; grid-template-columns: 1fr; gap: var(--s5
 .tag { font-family: var(--f-mono); font-size: .72rem; padding: .15rem .45rem; background: var(--tag); }
 .repo { font-family: var(--f-mono); font-size: .78rem; color: var(--accent); text-decoration: none; overflow-wrap: anywhere; }
 .repo:hover { text-decoration: underline; }
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin-top: var(--s4); max-width: 62ch; }
+.shots a { display: block; line-height: 0; border: 1px solid var(--line); background: var(--surface); transition: border-color .15s; }
+.shots a:first-child { grid-column: 1 / -1; }
+.shots a:hover { border-color: var(--fg); }
+.shots img { width: 100%; height: auto; aspect-ratio: 880 / 597; object-fit: cover; object-position: left top; }
+.shots-cap { margin: .4rem 0 0; font-family: var(--f-mono); font-size: .72rem; color: var(--muted); }
 .proj.minor { padding-block: var(--s4); }
 .proj.minor h3 { font-size: 1.125rem; }
 .proj[hidden] { display: none !important; }
@@ -236,6 +242,7 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
   <div class="wrap">
     <a class="mark" href="#inicio" aria-label="Inicio"><i aria-hidden="true"></i>D. Cecilia</a>
     <nav aria-label="Secciones">
+      <a href="#sobre-mi" class="hide-sm">Sobre mí</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#ahora" class="hide-sm">Ahora</a>
       <a href="#trayectoria">Trayectoria</a>
@@ -268,6 +275,28 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
           <li><time datetime="2025-12-09">2025-12-09</time><span>Rutas &amp; Ruedas <em>· HTML + CSS</em></span></li>
         </ol>
       </aside>
+    </div>
+  </section>
+
+  <section class="block" id="sobre-mi">
+    <div class="wrap">
+      <div class="label">
+        <h2>Sobre mí</h2>
+      </div>
+      <div class="about">
+        <div>
+          <p>Estudio Desarrollo de Aplicaciones Multiplataforma y, en paralelo, un programa de dos años en Ciberseguridad. Me interesa sobre todo cómo se mueven y se protegen los datos: bases de datos, APIs, automatización con IA y seguridad.</p>
+          <p>Aprendo construyendo. Los proyectos de clase los termino y los publico, y en paralelo desarrollo los míos propios, como un asistente personal con IA que funciona en local.</p>
+          <p>Fuera del código he trabajado como socorrista desde 2023 y he hecho voluntariado en Bélgica e Irlanda, donde me acostumbré a trabajar en inglés con gente de muchos países.</p>
+        </div>
+        <dl class="facts">
+          <dt>Base</dt><dd>Madrid, España</dd>
+          <dt>Idiomas</dt><dd>Español nativo<br>Inglés nivel alto</dd>
+          <dt>Busco</dt><dd>Desarrollo de software, IA y ciberseguridad</dd>
+          <dt>Extra</dt><dd>Carnet de conducir y disponibilidad para viajar</dd>
+          <dt>Fuera</dt><dd>Viajar, deporte y cocina</dd>
+        </dl>
+      </div>
     </div>
   </section>
 
@@ -358,6 +387,13 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
                 <li>Lectura del XML con DOM, compatible con el formato antiguo y el actual de los datos.</li>
                 <li>Avisos para números no válidos y habitaciones inexistentes.</li>
               </ul>
+              <div class="shots" aria-label="Capturas de HotelApp">
+                <a href="img/hotelapp/disponible.webp" target="_blank" rel="noopener"><img src="img/hotelapp/disponible-thumb.webp" width="440" height="299" alt="HotelApp buscando la habitación 112: aparece como disponible y se filtra su reserva" loading="lazy"></a>
+                <a href="img/hotelapp/ocupada.webp" target="_blank" rel="noopener"><img src="img/hotelapp/ocupada-thumb.webp" width="440" height="299" alt="Búsqueda de una habitación ocupada" loading="lazy"></a>
+                <a href="img/hotelapp/no-existe.webp" target="_blank" rel="noopener"><img src="img/hotelapp/no-existe-thumb.webp" width="440" height="299" alt="Aviso al buscar una habitación que no existe" loading="lazy"></a>
+                <a href="img/hotelapp/mantenimiento.webp" target="_blank" rel="noopener"><img src="img/hotelapp/mantenimiento-thumb.webp" width="440" height="299" alt="Habitación en mantenimiento" loading="lazy"></a>
+              </div>
+              <p class="shots-cap">Capturas: habitación disponible, ocupada, inexistente y en mantenimiento.</p>
             </div>
             <div class="meta">
               <dl>
@@ -540,27 +576,6 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
     </div>
   </section>
 
-  <section class="block" id="sobre-mi">
-    <div class="wrap">
-      <div class="label">
-        <h2>Sobre mí</h2>
-      </div>
-      <div class="about">
-        <div>
-          <p>Estudio Desarrollo de Aplicaciones Multiplataforma y, en paralelo, un programa de dos años en Ciberseguridad. Me interesa sobre todo cómo se mueven y se protegen los datos: bases de datos, APIs, automatización con IA y seguridad.</p>
-          <p>Aprendo construyendo. Los proyectos de clase los termino y los publico, y en paralelo desarrollo los míos propios, como un asistente personal con IA que funciona en local.</p>
-          <p>Fuera del código he trabajado como socorrista desde 2023 y he hecho voluntariado en Bélgica e Irlanda, donde me acostumbré a trabajar en inglés con gente de muchos países.</p>
-        </div>
-        <dl class="facts">
-          <dt>Base</dt><dd>Madrid, España</dd>
-          <dt>Idiomas</dt><dd>Español nativo<br>Inglés nivel alto</dd>
-          <dt>Busco</dt><dd>Desarrollo de software, IA y ciberseguridad</dd>
-          <dt>Extra</dt><dd>Carnet de conducir y disponibilidad para viajar</dd>
-          <dt>Fuera</dt><dd>Viajar, deporte y cocina</dd>
-        </dl>
-      </div>
-    </div>
-  </section>
 
   <section class="contact" id="contacto">
     <div class="wrap">
