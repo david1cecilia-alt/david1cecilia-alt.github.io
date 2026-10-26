@@ -260,10 +260,11 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
       <aside class="log" aria-label="Actividad reciente en GitHub">
         <header><b>git log --oneline</b><b>david1cecilia-alt</b></header>
         <ol>
+          <li><time datetime="2026-10-26">2026-10-26</time><span>boxeo-app <em>· PWA + Python</em></span></li>
+          <li><time datetime="2026-10-26">2026-10-26</time><span>HotelApp <em>· JavaFX + XML</em></span></li>
           <li><time datetime="2026-10-18">2026-10-18</time><span>PromeHub-DataExchange <em>· CSV ↔ XML</em></span></li>
           <li><time datetime="2026-06-29">2026-06-29</time><span>API REST de películas <em>· Node + MongoDB</em></span></li>
           <li><time datetime="2026-05-14">2026-05-14</time><span>Autoescuelas Rápido <em>· Java + MySQL</em></span></li>
-          <li><time datetime="2026-05-09">2026-05-09</time><span>Katas de Python, JS y SQL</span></li>
           <li><time datetime="2025-12-09">2025-12-09</time><span>Rutas &amp; Ruedas <em>· HTML + CSS</em></span></li>
         </ol>
       </aside>
@@ -286,6 +287,28 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
         </div>
 
         <div class="projects" id="project-list">
+          <article class="proj" data-tags="js py db">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/boxeo-app" target="_blank" rel="noopener">Boxeo · entrenador por voz</a></h3>
+              <p class="what">Temporizador de asaltos que dicta combinaciones de boxeo en voz alta para entrenar en el saco o la sombra sin mirar la pantalla. Es una PWA instalable que funciona en el móvil sin conexión.</p>
+              <ul class="points">
+                <li>Motor de reglas en Python como referencia y un port en JavaScript para que el móvil no necesite servidor; los dos leen los mismos datos JSON.</li>
+                <li>183 tests con pytest y node:test, incluidos los que comprueban que los dos motores se comportan igual. En CI solo se despliega si pasan.</li>
+                <li>Historial con gráficos SVG hechos a mano, valoración tras cada sesión y copia de seguridad en JSON. Servidor opcional con FastAPI y SQLite.</li>
+                <li>Pensada para usar con guantes: botones grandes, un color por fase y contraste AA.</li>
+              </ul>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">PWA</span></div></dd>
+                <dt>Tests</dt><dd>183, en CI con GitHub Actions</dd>
+                <dt>Contexto</dt><dd>Proyecto personal</dd>
+              </dl>
+              <a class="repo" href="https://david1cecilia-alt.github.io/boxeo-app/" target="_blank" rel="noopener">↗ Probar la app</a>
+              <a class="repo" href="https://github.com/david1cecilia-alt/boxeo-app" target="_blank" rel="noopener">↗ boxeo-app</a>
+            </div>
+          </article>
+
           <article class="proj" data-tags="java db">
             <div>
               <h3><a href="https://github.com/david1cecilia-alt/Proyecto_Intermodular_DSS" target="_blank" rel="noopener">Autoescuelas Rápido</a></h3>
@@ -323,6 +346,25 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
                 <dt>Contexto</dt><dd>DAM 2º</dd>
               </dl>
               <a class="repo" href="https://github.com/david1cecilia-alt/PromeHub-DataExchange" target="_blank" rel="noopener">↗ PromeHub-DataExchange</a>
+            </div>
+          </article>
+
+          <article class="proj" data-tags="java">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/hotel-reservas-javafx" target="_blank" rel="noopener">HotelApp · Reservas</a></h3>
+              <p class="what">Aplicación de escritorio que carga las habitaciones y reservas de un hotel desde un fichero XML y las muestra en tablas. Al buscar una habitación por número indica su estado (disponible, ocupada o en mantenimiento) y filtra sus reservas.</p>
+              <ul class="points">
+                <li>Interfaz en JavaFX con FXML y la lógica en un controlador separado.</li>
+                <li>Lectura del XML con DOM, compatible con el formato antiguo y el actual de los datos.</li>
+                <li>Avisos para números no válidos y habitaciones inexistentes.</li>
+              </ul>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Java 21</span><span class="tag">JavaFX</span><span class="tag">FXML</span><span class="tag">Maven</span><span class="tag">XML</span></div></dd>
+                <dt>Contexto</dt><dd>Desarrollo de Interfaces, DAM 2º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/hotel-reservas-javafx" target="_blank" rel="noopener">↗ hotel-reservas-javafx</a>
             </div>
           </article>
 
@@ -470,20 +512,26 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
       <div class="stack">
         <div class="stack-row"><h3>Lenguajes</h3><div class="skills">
           <span class="skill">TypeScript <small>TCare</small></span>
-          <span class="skill">Java <small>Autoescuela, PromeHub</small></span>
-          <span class="skill">Python <small>katas</small></span>
-          <span class="skill">JavaScript <small>API REST, katas</small></span>
-          <span class="skill">SQL <small>Autoescuela, katas</small></span>
-          <span class="skill">HTML / CSS <small>Rutas &amp; Ruedas</small></span>
+          <span class="skill">Java <small>Autoescuelas, PromeHub, HotelApp</small></span>
+          <span class="skill">JavaScript <small>Boxeo, API REST</small></span>
+          <span class="skill">Python <small>Boxeo, katas</small></span>
+          <span class="skill">SQL <small>TCare, Autoescuelas</small></span>
+          <span class="skill">HTML / CSS <small>Boxeo, Rutas &amp; Ruedas</small></span>
+        </div></div>
+        <div class="stack-row"><h3>Móvil, web y escritorio</h3><div class="skills">
+          <span class="skill">React Native y Expo <small>TCare</small></span><span class="skill">PWA sin conexión <small>Boxeo</small></span><span class="skill">JavaFX y FXML <small>HotelApp</small></span>
+        </div></div>
+        <div class="stack-row"><h3>Back-end</h3><div class="skills">
+          <span class="skill">Supabase <small>TCare</small></span><span class="skill">FastAPI <small>Boxeo</small></span><span class="skill">Node.js y Express <small>API REST</small></span><span class="skill">APIs REST</span>
         </div></div>
         <div class="stack-row"><h3>Datos</h3><div class="skills">
-          <span class="skill">PostgreSQL <small>TCare</small></span><span class="skill">Supabase <small>TCare</small></span><span class="skill">MySQL</span><span class="skill">MongoDB</span><span class="skill">JDBC</span><span class="skill">JAXB</span><span class="skill">XML / XSD</span><span class="skill">CSV</span>
+          <span class="skill">PostgreSQL</span><span class="skill">MySQL</span><span class="skill">SQLite</span><span class="skill">MongoDB</span><span class="skill">JDBC</span><span class="skill">XML (DOM, JAXB, XSD)</span><span class="skill">JSON y CSV</span>
         </div></div>
-        <div class="stack-row"><h3>Móvil y back-end</h3><div class="skills">
-          <span class="skill">React Native <small>TCare</small></span><span class="skill">Expo</span><span class="skill">Node.js</span><span class="skill">Express</span><span class="skill">APIs REST</span>
+        <div class="stack-row"><h3>Pruebas y CI</h3><div class="skills">
+          <span class="skill">pytest <small>Boxeo</small></span><span class="skill">node:test <small>Boxeo</small></span><span class="skill">GitHub Actions <small>TCare, Boxeo</small></span><span class="skill">Maven</span>
         </div></div>
         <div class="stack-row"><h3>Herramientas</h3><div class="skills">
-          <span class="skill">Git y GitHub</span><span class="skill">GitHub Actions</span><span class="skill">Maven</span><span class="skill">VS Code</span>
+          <span class="skill">Git y GitHub</span><span class="skill">VS Code</span>
         </div></div>
         <div class="stack-row"><h3>IA</h3><div class="skills">
           <span class="skill">Desarrollo asistido por IA <small>Antigravity</small></span><span class="skill">Modelos de IA en local <small>Jarvis</small></span>
