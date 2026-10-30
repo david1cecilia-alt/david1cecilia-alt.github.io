@@ -275,6 +275,7 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
       <aside class="log" aria-label="Actividad reciente en GitHub">
         <header><b>git log --oneline</b><b>david1cecilia-alt</b></header>
         <ol>
+          <li><time datetime="2026-10-30">2026-10-30</time><span>HotelApp · Filtros <em>· JavaFX + XML</em></span></li>
           <li><time datetime="2026-10-26">2026-10-26</time><span>boxeo-app <em>· PWA + Python</em></span></li>
           <li><time datetime="2026-10-26">2026-10-26</time><span>HotelApp <em>· JavaFX + XML</em></span></li>
           <li><time datetime="2026-10-18">2026-10-18</time><span>PromeHub-DataExchange <em>· CSV ↔ XML</em></span></li>
@@ -412,6 +413,35 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
                 <dt>Contexto</dt><dd>Desarrollo de Interfaces, DAM 2º</dd>
               </dl>
               <a class="repo" href="https://github.com/david1cecilia-alt/hotel-reservas-javafx" target="_blank" rel="noopener">↗ hotel-reservas-javafx</a>
+            </div>
+          </article>
+
+          <article class="proj" data-tags="java">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/hotel-reservas-javafx-parte-2" target="_blank" rel="noopener">HotelApp · Filtros</a></h3>
+              <p class="what">Segunda parte de HotelApp: la tabla de habitaciones se filtra al instante por estado, capacidad mínima y accesibilidad, con un contador de resultados. Mantiene la búsqueda por número de habitación.</p>
+              <ul class="points">
+                <li>ComboBox, Spinner y CheckBox conectados con listeners de propiedades, sin botón de aplicar.</li>
+                <li>FilteredList con un único Predicate que combina los tres filtros sin tocar la lista original.</li>
+                <li>La búsqueda se hace sobre las 30 habitaciones y, si la encontrada estaba oculta por los filtros, los limpia sola.</li>
+              </ul>
+              <details class="gallery">
+              <summary>Ver capturas (4)</summary>
+              <div class="shots" aria-label="Capturas de HotelApp · Filtros">
+                <a href="img/hotelapp2/filtro-accesibles-y-busqueda.webp" target="_blank" rel="noopener"><img src="img/hotelapp2/filtro-accesibles-y-busqueda.webp" width="792" height="576" alt="HotelApp con el filtro Solo accesibles activo (10 de 30 habitaciones) y la habitación 120 encontrada como disponible" loading="lazy"></a>
+                <a href="img/hotelapp2/vista-inicial.webp" target="_blank" rel="noopener"><img src="img/hotelapp2/vista-inicial-thumb.webp" width="440" height="315" alt="Vista inicial con las 30 habitaciones y los filtros sin aplicar" loading="lazy"></a>
+                <a href="img/hotelapp2/filtros-estado-capacidad.webp" target="_blank" rel="noopener"><img src="img/hotelapp2/filtros-estado-capacidad-thumb.webp" width="440" height="319" alt="Filtros por estado disponible y capacidad mínima 2: 14 de 30 habitaciones" loading="lazy"></a>
+                <a href="img/hotelapp2/busqueda-con-filtros.webp" target="_blank" rel="noopener"><img src="img/hotelapp2/busqueda-con-filtros-thumb.webp" width="440" height="307" alt="Búsqueda de la habitación 120 con filtros activos" loading="lazy"></a>
+              </div>
+              <p class="shots-cap">Filtro por accesibilidad con búsqueda, vista inicial, estado y capacidad, y búsqueda con filtros. Pulsa una para verla a tamaño completo.</p>
+              </details>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Java 17</span><span class="tag">JavaFX</span><span class="tag">FXML</span><span class="tag">Maven</span><span class="tag">XML</span></div></dd>
+                <dt>Contexto</dt><dd>Desarrollo de Interfaces, DAM 2º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/hotel-reservas-javafx-parte-2" target="_blank" rel="noopener">↗ hotel-reservas-javafx-parte-2</a>
             </div>
           </article>
 
