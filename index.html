@@ -170,6 +170,9 @@ section.block > .wrap { display: grid; grid-template-columns: 1fr; gap: var(--s5
 .shots a:first-child { grid-column: 1 / -1; }
 .shots a:hover { border-color: var(--fg); }
 .shots img { width: 100%; height: auto; aspect-ratio: 880 / 597; object-fit: cover; object-position: left top; }
+.shots.phone { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 48ch; }
+.shots.phone a:first-child { grid-column: auto; }
+.shots.phone img { aspect-ratio: 240 / 534; }
 .shots-cap { margin: .4rem 0 0; font-family: var(--f-mono); font-size: .72rem; color: var(--muted); }
 .proj.minor { padding-block: var(--s4); }
 .proj.minor h3 { font-size: 1.125rem; }
@@ -275,13 +278,13 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
       <aside class="log" aria-label="Actividad reciente en GitHub">
         <header><b>git log --oneline</b><b>david1cecilia-alt</b></header>
         <ol>
+          <li><time datetime="2026-11-16">2026-11-16</time><span>NoticiasFP <em>· Android + Material</em></span></li>
+          <li><time datetime="2026-11-10">2026-11-10</time><span>MiBiblioteca <em>· Android + Room</em></span></li>
           <li><time datetime="2026-10-30">2026-10-30</time><span>HotelApp · Parte 2 · Filtros <em>· JavaFX + XML</em></span></li>
           <li><time datetime="2026-10-26">2026-10-26</time><span>boxeo-app <em>· PWA + Python</em></span></li>
           <li><time datetime="2026-10-26">2026-10-26</time><span>HotelApp <em>· JavaFX + XML</em></span></li>
           <li><time datetime="2026-10-18">2026-10-18</time><span>PromeHub-DataExchange <em>· CSV ↔ XML</em></span></li>
           <li><time datetime="2026-06-29">2026-06-29</time><span>API REST de películas <em>· Node + MongoDB</em></span></li>
-          <li><time datetime="2026-05-14">2026-05-14</time><span>Autoescuelas Rápido <em>· Java + MySQL</em></span></li>
-          <li><time datetime="2025-12-09">2025-12-09</time><span>Rutas &amp; Ruedas <em>· HTML + CSS</em></span></li>
         </ol>
       </aside>
     </div>
@@ -445,6 +448,56 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
             </div>
           </article>
 
+          <article class="proj" data-tags="java db">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/MiBiblioteca-Activity" target="_blank" rel="noopener">Mi Biblioteca</a></h3>
+              <p class="what">App Android para llevar una biblioteca personal: añadir libros, marcarlos como leídos, buscarlos por título y borrarlos con opción de deshacer. Los datos se guardan en el móvil y siguen ahí al cerrar la app.</p>
+              <ul class="points">
+                <li>Persistencia con Room sobre SQLite: entidad, DAO con consultas, altas, cambios y bajas, y base de datos singleton.</li>
+                <li>Migración de esquema de la versión 1 a la 2 para añadir una columna de valoración sin perder los datos.</li>
+                <li>Todo el acceso a datos va en un hilo secundario con ExecutorService y la interfaz se actualiza en el hilo principal.</li>
+              </ul>
+              <details class="gallery">
+              <summary>Ver capturas (4)</summary>
+              <div class="shots phone" aria-label="Capturas de Mi Biblioteca">
+                <a href="img/mibiblioteca/marcar-leido.webp" target="_blank" rel="noopener"><img src="img/mibiblioteca/marcar-leido-thumb.webp" width="240" height="534" alt="Lista de libros con uno marcado como leído y el contador actualizado" loading="lazy"></a>
+                <a href="img/mibiblioteca/confirmar-borrado.webp" target="_blank" rel="noopener"><img src="img/mibiblioteca/confirmar-borrado-thumb.webp" width="240" height="534" alt="Diálogo de confirmación antes de borrar un libro" loading="lazy"></a>
+                <a href="img/mibiblioteca/deshacer.webp" target="_blank" rel="noopener"><img src="img/mibiblioteca/deshacer-thumb.webp" width="240" height="534" alt="Libro borrado con la opción Deshacer en la parte inferior" loading="lazy"></a>
+                <a href="img/mibiblioteca/busqueda.webp" target="_blank" rel="noopener"><img src="img/mibiblioteca/busqueda-thumb.webp" width="240" height="534" alt="Búsqueda de libros por título desde la barra superior" loading="lazy"></a>
+              </div>
+              <p class="shots-cap">Marcar como leído, confirmar borrado, deshacer y búsqueda. Pulsa una para verla a tamaño completo.</p>
+              </details>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Java</span><span class="tag">Android</span><span class="tag">Room</span><span class="tag">SQLite</span><span class="tag">Material 3</span></div></dd>
+                <dt>Equipo</dt><dd>3 personas</dd>
+                <dt>Contexto</dt><dd>Programación Multimedia y Dispositivos Móviles, DAM 2º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/MiBiblioteca-Activity" target="_blank" rel="noopener">↗ MiBiblioteca-Activity</a>
+            </div>
+          </article>
+
+          <article class="proj" data-tags="java">
+            <div>
+              <h3><a href="https://github.com/david1cecilia-alt/NoticiasFP" target="_blank" rel="noopener">Noticias FP</a></h3>
+              <p class="what">App Android de noticias construida con componentes de Material Design. Las noticias se muestran en tarjetas por categoría y se pueden filtrar por sección, guardar como favoritas y publicar nuevas.</p>
+              <ul class="points">
+                <li>Menú lateral (Navigation Drawer) con secciones y un contador de favoritas en la cabecera.</li>
+                <li>Tarjetas con chips de categoría en un RecyclerView y botón flotante extendido que se encoge al hacer scroll.</li>
+                <li>La sección elegida se conserva al girar la pantalla, y publicar o abrir una noticia muestra un Snackbar.</li>
+              </ul>
+            </div>
+            <div class="meta">
+              <dl>
+                <dt>Stack</dt><dd><div class="tags"><span class="tag">Java</span><span class="tag">Android</span><span class="tag">Material Design</span><span class="tag">RecyclerView</span></div></dd>
+                <dt>Equipo</dt><dd>3 personas</dd>
+                <dt>Contexto</dt><dd>Programación Multimedia y Dispositivos Móviles, DAM 2º</dd>
+              </dl>
+              <a class="repo" href="https://github.com/david1cecilia-alt/NoticiasFP" target="_blank" rel="noopener">↗ NoticiasFP</a>
+            </div>
+          </article>
+
           <article class="proj" data-tags="js db">
             <div>
               <h3><a href="https://github.com/david1cecilia-alt/proyecto5-katas-nosql" target="_blank" rel="noopener">API REST de películas</a></h3>
@@ -596,7 +649,7 @@ footer .wrap { padding-block: var(--s5); display: flex; flex-wrap: wrap; justify
           <span class="skill">HTML / CSS <small>Boxeo, Rutas &amp; Ruedas</small></span>
         </div></div>
         <div class="stack-row"><h3>Móvil, web y escritorio</h3><div class="skills">
-          <span class="skill">React Native y Expo <small>TCare</small></span><span class="skill">PWA sin conexión <small>Boxeo</small></span><span class="skill">JavaFX y FXML <small>HotelApp</small></span>
+          <span class="skill">React Native y Expo <small>TCare</small></span><span class="skill">PWA sin conexión <small>Boxeo</small></span><span class="skill">JavaFX y FXML <small>HotelApp</small></span><span class="skill">Android nativo en Java <small>Mi Biblioteca, Noticias FP</small></span>
         </div></div>
         <div class="stack-row"><h3>Back-end</h3><div class="skills">
           <span class="skill">Supabase <small>TCare</small></span><span class="skill">FastAPI <small>Boxeo</small></span><span class="skill">Node.js y Express <small>API REST</small></span><span class="skill">APIs REST</span>
